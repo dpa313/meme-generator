@@ -1,16 +1,16 @@
 import React from 'react'
+import { useState } from 'react'
 import meme from '../Data'
 
 
 const Meme = () => {
+  const [allMemeImg,setAllMemeImg] = useState(meme)
 
-  let source
   const getImageMeme = () => {
     const memeArray = meme
     const randomNumber = Math.floor(Math.random()*memeArray.length)
     const source = meme[randomNumber].source
-    console.log(source);
-    
+    setAllMemeImg(source)
   }
 
   return (
@@ -31,7 +31,7 @@ const Meme = () => {
             </button>
         </div>
         <div className='meme--img'>
-            <img src={source} alt="" />
+            <img src={allMemeImg} alt="" />
         </div>
     </main>
   )
